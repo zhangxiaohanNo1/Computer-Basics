@@ -1,4 +1,4 @@
-package 排序;
+package 算法.排序;
 
 public class QuickSort {
 }
