@@ -5,12 +5,13 @@ import javax.xml.soap.Node;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
  * @author zhangxiaohan
  * @date 2019/10/22 23:13
- * @description: 二叉树的深度优先遍历
+ * @description: 二叉树的深度优先遍历  广度优先遍历
  */
 public class CreateBinaryTree {
     /**
@@ -46,6 +47,26 @@ public class CreateBinaryTree {
     }
 
     /**
+     * 二叉树根节点
+     * @param root
+     */
+    public static void levelOrderTraversal(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        //添加一个元素
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            //返回第一个元素并在队列中删除
+            TreeNode node = queue.poll();
+            System.out.println(node.data);
+            if(node.leftChild != null){
+                queue.offer(node.leftChild);
+            }
+            if(node.rightChild !=null){
+                queue.offer(node.rightChild);
+            }
+        }
+    }
+    /**
      * 二叉树前序遍历
      * @param node 二叉树节点
      */
@@ -57,6 +78,11 @@ public class CreateBinaryTree {
         preOrderTraversal(node.leftChild);
         preOrderTraversal(node.rightChild);
     }
+
+    /**
+     * 二叉树非递归前序遍历  用栈实现
+     * @param root 二叉树根节点
+     */
     public static void preOrderTraversalWithStack(TreeNode root){
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode treeNode = root;
