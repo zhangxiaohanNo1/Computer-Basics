@@ -92,9 +92,18 @@ public class Array<E> {
      * @return
      */
     public E get(int index){
-        if(index < 0 || index >= size)
+        if(index < 0 || index >= size){
             throw new IllegalArgumentException("Get failed. Index is illegal.");
+        }
         return data[index];
+    }
+
+    public E getFirst(){
+        return get(0);
+    }
+
+    public E getLast(){
+        return get(size - 1);
     }
 
     /**
